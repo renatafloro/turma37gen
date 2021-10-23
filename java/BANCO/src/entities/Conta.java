@@ -41,16 +41,27 @@ public abstract class Conta {
 		this.ativo = ativo;
 	}
 
+	// metodos
+
+	public void ativarConta() {
+		this.ativo = true;
+	}
+
 	public double debito(double valorDebito) {
-		if (valorDebito <= this.saldo) {
+
+		if (valorDebito <= 0) {
+			System.out.println("Impossível realizar...");
+		} else if (valorDebito > saldo) {
+			System.out.println("Saldo indisponível...");
+		} else if (valorDebito <= this.saldo) {
 			this.saldo = this.saldo - valorDebito;
-		} else {
-			System.out.println("SALDO INDISPONIVEL");
+			System.out.println("Operação realizada com sucesso!");
 		}
-		return this.saldo;
+		return valorDebito;
 	}
 
 	public void credito(double valorCredito) {
+
 		this.saldo = this.saldo + valorCredito;
 	}
 
